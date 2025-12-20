@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.CaloriesController">
+    <children>
+        <Label layoutX="40.0" layoutY="30.0" text="Daily Calorie Tracker">
+            <font><Font name="System Bold" size="24.0" /></font>
+        </Label>
+
+        <VBox layoutX="40.0" layoutY="100.0" spacing="20.0" prefWidth="520.0" style="-fx-background-color: #f0f0f0; -fx-padding: 30; -fx-background-radius: 10;">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="Your Target:" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+                    <Label fx:id="targetLabel" text="2000 kcal" textFill="#7f8c8d" />
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <ProgressBar fx:id="calorieProgressBar" prefWidth="350.0" progress="0.0" style="-fx-accent: #2ecc71;" />
+                    <Label fx:id="progressLabel" text="0 kcal consumed" />
+                </HBox>
+
+                <Separator />
+
+                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                    <Label text="Log Meal (kcal):" />
+                    <TextField fx:id="foodInput" prefWidth="100.0" promptText="500" />
+                    <Button onAction="#handleAddFood" text="Add Log" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                </HBox>
+            </children>
+        </VBox>
+
+        <Label layoutX="40.0" layoutY="350.0" text="*Target calculated based on Profile settings." textFill="#95a5a6">
+            <font><Font size="10.0" /></font>
+        </Label>
+
+        <Button layoutX="450.0" layoutY="350.0" onAction="#handleBack" text="Back to Menu" />
+    </children>
+</AnchorPane>

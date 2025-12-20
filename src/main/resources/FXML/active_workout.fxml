@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.ActiveWorkoutController">
+    <children>
+        <HBox layoutX="40.0" layoutY="20.0" spacing="10.0" alignment="CENTER_LEFT">
+            <children>
+                <Button onAction="#handlePreviousExercise" text="⬅ Prev" />
+                <Label fx:id="exerciseNameLabel" text="Exercise Name">
+                    <font><Font name="System Bold" size="24.0" /></font>
+                </Label>
+                <Button onAction="#handleNextExercise" text="Next ➡" />
+            </children>
+        </HBox>
+
+        <Label fx:id="setNumberLabel" layoutX="40.0" layoutY="80.0" text="Set #1" textFill="#616161" />
+
+        <VBox layoutX="40.0" layoutY="120.0" spacing="20.0">
+            <children>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="Reps:" prefWidth="60.0" />
+                    <TextField fx:id="repsField" prefWidth="100.0" />
+                </HBox>
+                <HBox fx:id="weightInputSection" spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="Weight:" prefWidth="60.0" />
+                    <TextField fx:id="weightField" prefWidth="100.0" />
+                    <Label text="kg" />
+                </HBox>
+            </children>
+        </VBox>
+
+        <Button layoutX="40.0" layoutY="280.0" onAction="#handleLogSet" prefHeight="40.0" prefWidth="120.0" text="Log Set" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+
+        <ListView fx:id="logListView" layoutX="300.0" layoutY="120.0" prefHeight="250.0" prefWidth="250.0" />
+        <Label layoutX="300.0" layoutY="95.0" text="Exercise History (This Session):" />
+
+        <Button layoutX="40.0" layoutY="380.0" onAction="#handleReturnToMenu" text="Return to Menu" style="-fx-background-color: #95a5a6; -fx-text-fill: white;" />
+        <Button layoutX="40.0" layoutY="430.0" onAction="#handleFinishWorkout" text="Finish &amp; Save Workout" prefWidth="150.0" />
+    </children>
+</AnchorPane>

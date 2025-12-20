@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.HistoryController">
+    <children>
+        <Label layoutX="40.0" layoutY="30.0" text="Workout History">
+            <font><Font name="System Bold" size="24.0" /></font>
+        </Label>
+
+        <TextArea fx:id="historyArea" layoutX="40.0" layoutY="80.0" prefHeight="300.0" prefWidth="520.0" editable="false" style="-fx-font-family: 'Monospaced'; -fx-font-size: 14px;"/>
+
+        <Button layoutX="40.0" layoutY="400.0" onAction="#handleBack" text="Back to Menu" />
+        <Button layoutX="460.0" layoutY="400.0" onAction="#handleClearHistory" text="Clear History" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+    </children>
+</AnchorPane>

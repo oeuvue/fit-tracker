@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.WorkoutLibraryController">
+    <children>
+        <Label layoutX="40.0" layoutY="25.0" text="Workout Planner">
+            <font><Font name="System Bold" size="24.0" /></font>
+        </Label>
+
+        <HBox layoutX="40.0" layoutY="80.0" spacing="20.0">
+            <children>
+                <VBox spacing="10.0">
+                    <Label text="Available Exercises" />
+                    <ListView fx:id="exerciseListView" prefHeight="240.0" prefWidth="250.0" />
+                    <Button onAction="#handleAddToRoutine" prefWidth="250.0" text="Add to Routine" />
+                </VBox>
+
+                <VBox spacing="10.0">
+                    <Label text="Your Routine" />
+                    <ListView fx:id="routineListView" prefHeight="240.0" prefWidth="250.0" />
+                    <Button onAction="#handleStartExercise" prefWidth="250.0" text="Start Exercise" />
+                </VBox>
+            </children>
+        </HBox>
+
+        <Button layoutX="40.0" layoutY="390.0" onAction="#handleBack" text="Back to Menu" />
+    </children>
+</AnchorPane>

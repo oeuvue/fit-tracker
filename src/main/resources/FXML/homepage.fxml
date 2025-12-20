@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.HomepageController">
+    <children>
+        <Label fx:id="welcomeLabel" layoutX="50.0" layoutY="40.0" text="Welcome, User!">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+
+        <VBox layoutX="200.0" layoutY="120.0" spacing="20.0">
+            <children>
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Start Workout" onAction="#goToLibrary" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Calorie Tracker" onAction="#goToCalories" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="My Profile" onAction="#goToProfile" />
+            </children>
+        </VBox>
+
+        <Button layoutX="500.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Workout History" onAction="#goToHistory" />
+    </children>
+</AnchorPane>
