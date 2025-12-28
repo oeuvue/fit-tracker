@@ -21,11 +21,11 @@ public class ProfileController {
 
     @FXML
     public void initialize() {
-        // Setup Dropdowns
+
         activityChoiceBox.getItems().addAll("Sedentary", "Lightly Active", "Moderately Active", "Very Active");
         goalChoiceBox.getItems().addAll("Lose Weight", "Maintain", "Gain Weight");
 
-        // Load User Data
+
         User user = UserSession.getInstance().getUser();
         if (user != null) {
             usernameLabel.setText(user.getUsername());
@@ -33,7 +33,6 @@ public class ProfileController {
             heightField.setText(String.valueOf(user.getHeight()));
             ageField.setText(String.valueOf(user.getAge()));
 
-            // Set defaults if null
             activityChoiceBox.setValue(user.getActivityLevel() != null ? user.getActivityLevel() : "Sedentary");
             goalChoiceBox.setValue(user.getGoal() != null ? user.getGoal() : "Maintain");
         }
@@ -44,14 +43,14 @@ public class ProfileController {
         User user = UserSession.getInstance().getUser();
         if (user != null) {
             try {
-                // 1. Update the Memory (Singleton)
+
                 user.setWeight(Double.parseDouble(weightField.getText()));
                 user.setHeight(Double.parseDouble(heightField.getText()));
                 user.setAge(Integer.parseInt(ageField.getText()));
                 user.setActivityLevel(activityChoiceBox.getValue());
                 user.setGoal(goalChoiceBox.getValue());
 
-                // 2. [FIX] Update the File (Persistence)
+
                 com.service.DataStore.saveUserProfile(user);
 
                 System.out.println("Profile Saved & Persisted!");

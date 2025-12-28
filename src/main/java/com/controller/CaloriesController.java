@@ -29,9 +29,7 @@ public class CaloriesController {
         User user = UserSession.getInstance().getUser();
 
         if (user != null) {
-            // 1. Load Daily Target (Profile)
             if (user.getWeight() > 0) {
-                // If you implemented Strategy Pattern, ensure this matches your Service
                 this.dailyTarget = CalorieService.calculateTarget(
                         user.getWeight(), user.getHeight(), user.getAge(),
                         user.getActivityLevel(), user.getGoal()
@@ -39,7 +37,6 @@ public class CaloriesController {
                 targetLabel.setText(String.format("%.0f kcal (%s)", dailyTarget, user.getGoal()));
             }
 
-            // 2. [FIX] Load Consumed Calories (Persistence)
             this.currentCalories = DataStore.loadDailyCalories(user.getUsername());
         }
 
@@ -52,7 +49,6 @@ public class CaloriesController {
             double calories = Double.parseDouble(foodInput.getText());
             currentCalories += calories;
 
-            // 3. [FIX] Save immediately after adding
             User user = UserSession.getInstance().getUser();
             if (user != null) {
                 DataStore.saveDailyCalories(user.getUsername(), currentCalories);

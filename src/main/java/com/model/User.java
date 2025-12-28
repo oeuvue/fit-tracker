@@ -6,7 +6,7 @@ public class User {
     private double height = 0.0;
     private int age = 0;
 
-    // NEW FIELDS
+
     private String activityLevel = "Sedentary";
     private String goal = "Maintain";
 
@@ -14,7 +14,7 @@ public class User {
         this.username = username;
     }
 
-    // Getters and Setters
+
     public String getUsername() { return username; }
 
     public double getWeight() { return weight; }

@@ -16,17 +16,16 @@ import java.io.IOException;
 
 public class HistoryController {
 
-    @FXML private TextArea historyArea; // Must match fx:id in FXML
+    @FXML private TextArea historyArea;
 
     @FXML
     public void initialize() {
         User user = UserSession.getInstance().getUser();
         if (user != null) {
-            // Load the data
             String history = DataStore.loadHistoryFile(user.getUsername());
             historyArea.setText(history);
 
-            // Auto-scroll to bottom to see latest workout
+
             historyArea.setScrollTop(Double.MAX_VALUE);
         } else {
             historyArea.setText("Error: No user logged in.");

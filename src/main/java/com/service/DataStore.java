@@ -7,9 +7,6 @@ import java.util.ArrayList;
 public class DataStore {
     private static final String USER_FILE = "users.csv";
 
-    // ==========================================
-    // 1. AUTHENTICATION (Login & Signup)
-    // ==========================================
 
     public static boolean validateLogin(String username, String password) {
         File file = new File(USER_FILE);
@@ -65,9 +62,7 @@ public class DataStore {
         return false;
     }
 
-    // ==========================================
-    // 2. WORKOUT HISTORY (Repository Pattern)
-    // ==========================================
+
 
     public static void saveWorkoutHistory(String username, List<String> logs) {
         String filename = username + "_history.txt";
@@ -88,7 +83,6 @@ public class DataStore {
         }
     }
 
-    // [THIS WAS MISSING] - This fixes the History Page
     public static String loadHistoryFile(String username) {
         String filename = username + "_history.txt";
         File file = new File(filename);
@@ -111,9 +105,6 @@ public class DataStore {
         return content.toString();
     }
 
-    // ==========================================
-    // 3. USER PROFILE PERSISTENCE
-    // ==========================================
 
     public static void saveUserProfile(com.model.User user) {
         String filename = user.getUsername() + "_profile.txt";
@@ -153,9 +144,7 @@ public class DataStore {
         }
     }
 
-    // ==========================================
-    // 4. CALORIE TRACKER PERSISTENCE
-    // ==========================================
+
 
     public static void saveDailyCalories(String username, double calories) {
         String filename = username + "_daily_log.txt";
@@ -185,9 +174,7 @@ public class DataStore {
         return 0;
     }
 
-    // ==========================================
-    // 5. PROGRESS OBSERVER RECORDS
-    // ==========================================
+
 
     public static java.util.Map<String, Double> loadPersonalBests(String username) {
         String filename = username + "_records.txt";

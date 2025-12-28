@@ -6,7 +6,7 @@ package com.model;
  */
 public class ExerciseSet {
     private int reps;
-    private double weight; // Will be 0 for bodyweight exercises
+    private double weight;
 
     public ExerciseSet(int reps, double weight) {
         this.reps = reps;

@@ -15,37 +15,37 @@ public class ProgressObserver implements WorkoutObserver {
         System.out.println("--------------------------------------------------");
         System.out.println(">> ANALYZING PROGRESS FOR " + user.getUsername().toUpperCase() + "...");
 
-        // 1. Load old records
+
         Map<String, Double> personalBests = DataStore.loadPersonalBests(user.getUsername());
         boolean newRecordSet = false;
 
         WorkoutSession session = WorkoutSession.getInstance();
 
-        // 2. Loop through every exercise done today
+
         for (Exercise exercise : session.getExerciseQueue()) {
             List<String> logs = session.getLogsForExercise(exercise.getName());
 
-            // Calculate best performance in THIS session
+
             double todaysBest = extractBestValue(logs, exercise.getLogType());
 
             if (todaysBest > 0) {
-                // Check against old record
+
                 double oldBest = personalBests.getOrDefault(exercise.getName(), 0.0);
 
                 if (todaysBest > oldBest) {
-                    // --- NEW RECORD LOGIC ---
+
                     double improvement = 0;
                     if (oldBest > 0) {
                         improvement = ((todaysBest - oldBest) / oldBest) * 100;
                     } else {
-                        improvement = 100; // First time doing it = 100% improvement logic
+                        improvement = 100;
                     }
 
                     System.out.println("🔥 NEW PR! " + exercise.getName());
                     System.out.println("   Old Best: " + oldBest + " -> New Best: " + todaysBest);
                     System.out.printf("   Growth: +%.1f%%\n", improvement);
 
-                    // Update the map
+
                     personalBests.put(exercise.getName(), todaysBest);
                     newRecordSet = true;
                 }

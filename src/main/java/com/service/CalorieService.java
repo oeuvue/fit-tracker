@@ -3,7 +3,7 @@ package com.service;
 public class CalorieService {
 
     public static double calculateTarget(double weight, double height, int age, String activityLevel, String goal) {
-        // 1. Base Logic (Mifflin-St Jeor) stays here
+
         double bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
 
         double multiplier = switch (activityLevel) {
@@ -16,7 +16,7 @@ public class CalorieService {
 
         double tdee = bmr * multiplier;
 
-        // 2. [STRATEGY PATTERN] Pick the right strategy
+
         GoalStrategy strategy;
 
         switch (goal) {
@@ -31,7 +31,7 @@ public class CalorieService {
                 break;
         }
 
-        // 3. Execute the strategy
+
         return strategy.calculate(tdee);
     }
 }

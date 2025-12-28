@@ -24,7 +24,7 @@ public class SignupController {
     @FXML
     private PasswordField newPasswordField;
 
-    // Triggered when "Create Account" is clicked
+
 
     @FXML
     public void handleSignup(ActionEvent event) {
@@ -36,25 +36,25 @@ public class SignupController {
             return;
         }
 
-        // [SERVICE CALL] Try to save the user
+
         boolean success = com.service.DataStore.registerUser(username, password);
 
         if (success) {
             System.out.println("User registered successfully!");
-            goToLogin(event); // Auto-redirect to login
+            goToLogin(event);
         } else {
             System.out.println("Registration failed! Username might be taken.");
-            // Ideally, show a label on the screen saying "Username taken"
+
         }
     }
 
-    // Triggered when "Back" is clicked
+
     @FXML
     public void handleBack(ActionEvent event) {
         goToLogin(event);
     }
 
-    // Helper method to switch scenes
+
     private void goToLogin(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/FXML/login.fxml"));

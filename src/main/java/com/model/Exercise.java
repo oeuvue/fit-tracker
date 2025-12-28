@@ -12,7 +12,6 @@ public abstract class Exercise {
     public String getName() { return name; }
     public String getMuscleGroup() { return muscleGroup; }
 
-    // Abstract method: Every exercise type handles its log string differently
     public abstract String getLogType();
 
     @Override

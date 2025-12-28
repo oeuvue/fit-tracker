@@ -7,6 +7,6 @@ public class BodyweightExercise extends Exercise {
 
     @Override
     public String getLogType() {
-        return "BODYWEIGHT"; // This tells the Controller to hide the Weight input
+        return "BODYWEIGHT";
     }
 }

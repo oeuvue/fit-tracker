@@ -18,9 +18,9 @@ public class HomepageController {
     @FXML
     private Label welcomeLabel;
 
-    private User currentUser; // Store the user who is logged in
+    private User currentUser;
 
-    // [DATA PASSING] This method is called by the LoginController
+
     public void initData(User user) {
         this.currentUser = user;
         welcomeLabel.setText("Welcome, " + user.getUsername() + "!");
@@ -28,7 +28,7 @@ public class HomepageController {
 
     @FXML
     public void handleLogout(ActionEvent event) throws IOException {
-        // Go back to Login Screen
+
         Parent root = FXMLLoader.load(getClass().getResource("/FXML/login.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -37,14 +37,14 @@ public class HomepageController {
 
     @FXML
     public void goToLibrary(ActionEvent event) throws IOException {
-        // Check if a session exists in the [SINGLETON]
+
         if (com.model.WorkoutSession.getInstance().getCurrentExercise() != null) {
-            // Redirect straight to the active workout
+
             Parent root = FXMLLoader.load(getClass().getResource("/FXML/active_workout.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
         } else {
-            // Otherwise, go to the library to pick an exercise
+
             Parent root = FXMLLoader.load(getClass().getResource("/FXML/workoutlibrary.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -59,14 +59,14 @@ public class HomepageController {
     }
     @FXML
     public void goToProfile(ActionEvent event) throws IOException {
-        // 1. Load the Profile FXML
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/profile.fxml"));
         Parent root = loader.load();
 
-        // 2. Get the current Stage (window)
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        // 3. Set and show the new Scene
+
         stage.setScene(new Scene(root));
         stage.show();
     }

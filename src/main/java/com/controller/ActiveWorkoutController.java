@@ -47,41 +47,37 @@ public class ActiveWorkoutController {
     public void handleFinishWorkout(ActionEvent event) {
         WorkoutSession session = WorkoutSession.getInstance();
 
-        // 1. Get the current user
+
         com.model.User user = com.service.UserSession.getInstance().getUser();
         String username = (user != null) ? user.getUsername() : "Guest";
 
-        // 2. Save Data (Existing Logic)
+
         java.util.List<String> allLogs = new java.util.ArrayList<>();
         for(Exercise e : session.getExerciseQueue()) {
             allLogs.addAll(session.getLogsForExercise(e.getName()));
         }
         DataStore.saveWorkoutHistory(username, allLogs);
 
-        // 3. [OBSERVER PATTERN] Trigger the notification!
+
         if (user != null) {
             session.notifyWorkoutFinished(user);
         }
 
-        // 4. Cleanup and Exit
+
         session.reset();
         handleReturnToMenu(event);
     }
 
-    // Inside ActiveWorkoutController.java
+
 
     @FXML
     public void initialize() {
         WorkoutSession session = WorkoutSession.getInstance();
 
-        // [OBSERVER PATTERN]
-        // 1. Keep the Smart Progress Tracker (Calculates percentages)
         session.addObserver(new com.service.observer.ProgressObserver());
 
-        // 2. Keep the Console Logger (For debugging)
         session.addObserver(new com.service.observer.ConsoleLogger());
 
-        // REMOVED: session.addObserver(new AchievementSystem()); <--- DELETED
 
         if (!session.getExerciseQueue().isEmpty()) {
             loadCurrentExercise();
@@ -90,11 +86,11 @@ public class ActiveWorkoutController {
 
     private void updateUIVisibility() {
         if (currentExercise instanceof BodyweightExercise) {
-            // Hide it
+
             weightInputSection.setVisible(false);
             weightInputSection.setManaged(false);
         } else {
-            // Show it again!
+
             weightInputSection.setVisible(true);
             weightInputSection.setManaged(true);
         }
@@ -103,7 +99,7 @@ public class ActiveWorkoutController {
     @FXML
     public void handleReturnToMenu(ActionEvent event) {
         try {
-            // [NAVIGATION] Switching back to the Homepage
+
             Parent root = FXMLLoader.load(getClass().getResource("/FXML/homepage.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -117,7 +113,7 @@ public class ActiveWorkoutController {
         }
     }
 
-    // Inside ActiveWorkoutController
+
 
     @FXML
     public void handleNextExercise() {
@@ -143,7 +139,6 @@ public class ActiveWorkoutController {
 
         exerciseNameLabel.setText(currentExercise.getName());
 
-        // Load logs specific to THIS exercise
         ObservableList<String> logs = FXCollections.observableArrayList(
                 session.getLogsForExercise(currentExercise.getName())
         );
@@ -158,13 +153,11 @@ public class ActiveWorkoutController {
 
     @FXML
     public void handleLogSet(ActionEvent event) {
-        // ... (Your validation code) ...
         String logEntry = "Set " + setCounter + ": " + repsField.getText() + " reps";
         if (currentExercise instanceof WeightedExercise) {
             logEntry += " @ " + weightField.getText() + "kg";
         }
 
-        // Save to Singleton indexed by Exercise Name
         WorkoutSession.getInstance().addLogForExercise(currentExercise.getName(), logEntry);
 
         setLogs.add(logEntry);

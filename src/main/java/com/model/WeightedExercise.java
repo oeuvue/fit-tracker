@@ -7,6 +7,6 @@ public class WeightedExercise extends Exercise {
 
     @Override
     public String getLogType() {
-        return "WEIGHTED"; // This tells the Controller to show the Weight input
+        return "WEIGHTED";
     }
 }
