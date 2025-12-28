@@ -2,7 +2,7 @@ package com.controller;
 
 import com.model.User;
 import com.service.CalorieService;
-import com.service.DataStore; // Don't forget this import!
+import com.service.DataStore;
 import com.service.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
